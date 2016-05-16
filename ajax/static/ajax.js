@@ -24,13 +24,11 @@ $('#post_submit').on('click',function(event) {
 		{
 			csrfmiddlewaretoken:document.getElementsByName('csrfmiddlewaretoken')[0].value,
 			name : $('#id_name').val(),
-			// name : $('#id_name').val(),
-			// name : $('#id_name').val(),
-
-
+			email : $('#id_email').val(),
+			password : $('#id_password').val(),
 		},
 		success: function(json) {
-			alert("Congratulations! You scored: " + json['hello']);
+			alert("Congratulations! You scored: " + json['status']);
 
 		},
 

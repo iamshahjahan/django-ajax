@@ -9,24 +9,11 @@ from django.forms import ModelForm
 
 class Student(models.Model):
 	name = models.CharField(max_length = 20 )
-	password = models.CharField(max_length = 10 )
+	password = models.CharField(max_length = 100 )
 	email = models.CharField( max_length = 10 )
 
 
 class StudentForm(forms.ModelForm):
 	class Meta:
 		model = Student
-		fields = '__all__'	
-
-		labels = {
-            'name': ('Name'),
-        }
-        help_texts = {
-            'name': ('Some useful help text.'),
-        }
-        error_messages = {
-            'name': {
-                'max_length': ("This writer's name is too long."),
-            },
-        }		
-		
+		fields = '__all__'

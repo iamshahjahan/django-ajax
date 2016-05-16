@@ -13,5 +13,26 @@ def index(request):
 
 def apply(request):
 
-	data = {'hello' : 'hi'}
-	return JsonResponse(data)	
+	if request.method == 'POST':
+
+
+
+	    student = StudentForm(request.POST)
+
+	    # student.name = request.POST.get('name')
+	    # student.email = request.POST.get('email')
+	    # student.password = request.POST.get('password')
+
+
+	    # student.name = name
+	    # student.email = email
+	    # student.password = password
+
+	    student.save()
+
+	    data = {"status" : "success"}
+	    return JsonResponse(data)
+	else:
+		data = {"status" : "failure"}
+       
+		return JsonResponse(data)
