@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+{% load static%}
+
+<html>
+<head>
+	<title>HTML</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'hi.css'%}">
+	<script type="text/javascript" src="{% static "jquery.js" %}">	</script>
+</head>
+<body>
+	<form id = "post_submit" action="{% url "apply" %}" method="POST">
+		{% csrf_token %}
+		{% for field in form %}
+			<p>{{field.label}} : {{field}}</p>
+		{% endfor %}
+
+		<p><input type="submit" name="Submit"></p>
+	</form>
+	<p id="click_option">Click here.</p>
+
+	<script type="text/javascript" src="{% static "ajax.js" %}">	</script>
+</body>
+</html>
