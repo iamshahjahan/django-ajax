@@ -2,7 +2,7 @@
 // console.log("value of csrfmiddlewaretoken is" + );
 
 
-$('#post_submit').on('click',function(event) {
+$('#post_submit').on('submit',function(event) {
 	event.preventDefault();
 	console.log("Working fine.");
 
