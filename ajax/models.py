@@ -19,14 +19,24 @@ def validate_name(value):
         )
 
 
-
-
-
-
 class Student(models.Model):
-	name = models.CharField(max_length = 20,validators=[validate_name] )
+	name = models.CharField(max_length = 20)	
 	password = models.CharField(max_length = 100 )
+	repeat_password = models.CharField(max_length = 100 )
 	email = models.EmailField( max_length = 50 )
+
+# custom validation of the above form
+
+def clean(self):
+	form_data = self.cleaned_data
+
+	if len(form_data['name']) > 5:
+		self.errors['name'] = ["Your name is more than 5 characters."]
+
+	if form_data['password'] != form_data['repeat_password']:
+		self.errors['repeat_password'] = ["Please enter the same password as above."]
+
+	return form_data
 
 
 class StudentForm(forms.ModelForm):

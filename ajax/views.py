@@ -14,6 +14,12 @@ def index(request):
 def apply(request):
 
 	if request.method == 'POST':
+		for key in request.POST:
+		    print(key)
+		    value = request.POST[key]
+		    print(value)
+
+		
 		student = StudentForm(request.POST)
 		if student.is_valid():
 			student.save()

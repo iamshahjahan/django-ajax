@@ -26,9 +26,10 @@ $('#post_submit').on('submit',function(event) {
 			name : $('#id_name').val(),
 			email : $('#id_email').val(),
 			password : $('#id_password').val(),
+			repeat_password : $('#id_repeat_password').val(),
 		},
 		success: function(json) {
-			alert("Congratulations! You scored: " + json['status']);
+			alert("Congratulations! You scored: " + json['errors'][0]);
 
 		},
 
