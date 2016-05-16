@@ -27,19 +27,22 @@ class Student(models.Model):
 
 # custom validation of the above form
 
-def clean(self):
-	form_data = self.cleaned_data
 
-	if len(form_data['name']) > 5:
-		self.errors['name'] = ["Your name is more than 5 characters."]
 
-	if form_data['password'] != form_data['repeat_password']:
-		self.errors['repeat_password'] = ["Please enter the same password as above."]
-
-	return form_data
 
 
 class StudentForm(forms.ModelForm):
 	class Meta:
 		model = Student
 		fields = '__all__'
+
+	def clean(self):
+		form_data = self.cleaned_data
+
+		if len(form_data['name']) > 5:
+			self.errors['name'] = ["Your name is more than 5 characters."]
+
+		if form_data['password'] != form_data['repeat_password']:
+			self.errors['repeat_password'] = ["Please enter the same password as above."]
+
+		return form_data
